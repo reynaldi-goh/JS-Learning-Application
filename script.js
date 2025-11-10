@@ -498,19 +498,25 @@ if (actionBtn && statusText) {
   });
 }`,
 
-    'dom-event-delegation': `// Listen for all clicks inside the mini website
-const miniWebsite = document.getElementById('mini-website');
+    'dom-event-delegation': `// Event delegation with the playground console
+document.addEventListener('click', (event) => {
+  const clicked = event.target;
 
-if (miniWebsite) {
-  miniWebsite.addEventListener('click', (event) => {
-    const clicked = event.target;
-    console.log('You clicked:', clicked.tagName);
+  // Only handle clicks inside the mini website
+  if (!clicked.closest('#mini-website')) return;
 
-    if (clicked.matches('.nav-btn')) {
-      clicked.classList.toggle('is-active');
-    }
-  });
-}`,
+  // Note:
+  // In these lessons, console.log() works normally for code that runs
+  // when you press “Run”. But event listeners (like clicks) happen later,
+  // after the console has finished overriding console.log.
+  // So this lesson uses playgroundLog(), which prints to the console on the page.
+  // You may keep using console.log() for your own code.
+  playgroundLog('You clicked:', clicked.tagName);
+
+  if (clicked.matches('.nav-btn')) {
+    clicked.classList.toggle('is-active');
+  }
+});`,
 
     events: `// Click event example
 document.addEventListener('click', (event) => {
@@ -772,8 +778,41 @@ console.log('(Events will also appear in the browser console)');`,
 
     function run() {
       clearConsole();
-      
-      // Override console methods to capture output
+
+      window.playgroundLog = (...args) => addLog(args, 'log');
+
+      if (!window.__consoleHooked) {
+        window.__consoleHooked = true;
+
+        const realLog = console.log;
+
+        console.log = (...args) => {
+          realLog.apply(console, args);        // still prints to browser console
+          addLog(args, 'log');                 // prints to website console
+        };
+      }
+
+      // Special handling for event delegation lesson (#6)
+      if (key === 'dom-event-delegation') {
+
+        // If the mini website is NOT yet spawned, spawn it first
+        if (!document.getElementById('mini-website-wrapper')) {
+          const wrapper = typeof spawnMiniWebsite === 'function'
+            ? spawnMiniWebsite()
+            : null;
+
+          // Disable generator button
+          if (generateMiniWebsiteBtn) {
+            disableMiniWebsiteGenerator(generateMiniWebsiteBtn);
+          }
+
+          // Wait ONE microtask so DOM settles before running user code
+          setTimeout(run, 0);
+          return;
+        }
+      }
+
+      // Normal execution path
       const originalLog = console.log;
       const originalError = console.error;
       const originalWarn = console.warn;
@@ -783,37 +822,32 @@ console.log('(Events will also appear in the browser console)');`,
         originalLog.apply(console, args);
         addLog(args, 'log');
       };
-
       console.error = (...args) => {
         originalError.apply(console, args);
         addLog(args, 'error');
       };
-
       console.warn = (...args) => {
         originalWarn.apply(console, args);
         addLog(args, 'warn');
       };
-
       console.info = (...args) => {
         originalInfo.apply(console, args);
         addLog(args, 'info');
       };
 
       try {
-        // Execute user code
         const executable = new Function(editor.value);
         executable();
       } catch (error) {
-        addLog([error instanceof Error ? error.message : String(error)], 'error');
-        console.error(error);
+        addLog([error.message || String(error)], 'error');
       } finally {
-        // Restore original console methods
         console.log = originalLog;
         console.error = originalError;
         console.warn = originalWarn;
         console.info = originalInfo;
       }
     }
+
 
     reset();
 
