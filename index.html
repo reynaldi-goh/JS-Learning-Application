@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Modern, responsive website template" />
+    <title>Javascript Lesson 4</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="favicon.ico" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="#">Brand</a>
+
+        <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+
+        <nav id="primary-nav" class="nav" aria-label="Primary">
+          <ul>
+            <li><a href="#curriculum">Curriculum</a></li>
+            <li><a href="#resources">Resources</a></li>
+          </ul>
+        </nav>
+
+        <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle lesson navigation" aria-expanded="false">
+          <span class="sidebar-toggle-icon" aria-hidden="true">☰</span>
+        </button>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <span class="theme-icon" aria-hidden="true">🌙</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+      <aside class="lesson-sidebar" aria-label="Lesson navigation">
+        <nav class="lesson-nav">
+          <a href="#lesson-printing">Printing</a>
+          <a href="#lesson-including-js">Including JS</a>
+          <a href="#lesson-variables">Variables</a>
+          <a href="#lesson-data-types">Data Types</a>
+          <a href="#lesson-conditionals">Conditionals</a>
+          <a href="#lesson-arrays">Arrays</a>
+          <a href="#lesson-objects">Objects</a>
+          <a href="#lesson-loops">Loops</a>
+          <a href="#lesson-functions">Functions</a>
+          <a href="#lesson-dom">DOM Basics</a>
+          <a href="#lesson-events">Events</a>
+        </nav>
+        <div class="sidebar-resize-handle" aria-label="Resize sidebar" role="separator" aria-orientation="vertical"></div>
+      </aside>
+
+      <div class="main-content">
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <h1>Teach JavaScript with interactive lessons</h1>
+            <p>
+              A minimalist classroom hub that pairs guided explanations with live code playgrounds so learners can see concepts in motion.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#curriculum">Start Exploring</a>
+            </div>
+          </div>
+          <div class="hero-media" aria-hidden="true">
+            <div class="card">
+              <div class="card-header">Live Demo</div>
+              <div class="card-body">
+                <div class="live-demo-grid">
+                  <img
+                    src="assets/bailando_cat_dancing.gif"
+                    alt="Animated bailando cat dancing in a colorful loop"
+                    class="live-demo-gif"
+                    loading="lazy"
+                  />
+                  <img
+                    src="assets/bailando_cat_dancing.gif"
+                    alt=""
+                    class="live-demo-gif"
+                    loading="lazy"
+                    aria-hidden="true"
+                  />
+                  <img
+                    src="assets/bailando_cat_dancing.gif"
+                    alt=""
+                    class="live-demo-gif"
+                    loading="lazy"
+                    aria-hidden="true"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section alt">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Built by Cursor AI</h2>
+            <p>
+              Hello! I'm Cursor AI. Imeow, the vibe coder, asked me to introduce myself—so here I am! 
+              I built this interactive JavaScript learning platform to help students learn through hands-on experimentation.
+            </p>
+            <p>
+              Every lesson includes working code examples you can modify and run instantly. 
+              Try interacting with the canvases below—move your mouse around! 🎨
+            </p>
+            <p style="margin-top: 20px; padding: 16px; background: color-mix(in hsl, var(--primary) 15%, var(--bg)); border-radius: var(--radius-md); border-left: 3px solid var(--primary);">
+              <strong>JavaScript in Action:</strong> These interactive canvases demonstrate core JS concepts! 
+              The left canvas uses <code>event listeners</code> and <code>requestAnimationFrame</code> for smooth animations. 
+              The right canvas showcases <code>mouse events</code> (mousedown, mousemove, mouseup) and <code>array manipulation</code> 
+              to create a paint effect. Both use <code>Canvas API</code>, <code>loops</code>, <code>functions</code>, and <code>object-oriented</code> 
+              particle systems—exactly what you'll learn in the lessons below!
+            </p>
+          </div>
+          <div class="cursor-canvas-container">
+            <div class="canvas-wrapper">
+              <canvas id="cursor-canvas-1" width="600" height="300"></canvas>
+              <p class="canvas-hint">Move your mouse here! 👆</p>
+            </div>
+            <div class="canvas-wrapper">
+              <canvas id="cursor-canvas-2" width="600" height="300"></canvas>
+              <p class="canvas-hint">And here too! ✨</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="curriculum" class="section">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Curriculum</h2>
+            <p>
+              Each module includes a concise primer, discussion prompts, and a bespoke coding sandbox. Encourage experimentation by tweaking the examples together.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="lesson-printing" class="section lesson">
+        <div class="container lesson-inner">
+          <div class="lesson-content">
+            <h3>Printing</h3>
+            <p>
+              Every program needs a way to talk back to you. In JavaScript, that's done with <code>console.log()</code>. 
+              It displays information in the browser console. You can right-click and select "Inspect" or "Developer Tools" to view it.
+            </p>
+            <p>
+              Developers use it constantly to test ideas, debug code, or simply check if something's working. 
+              Think of it as your private notebook where JavaScript whispers what it's doing behind the scenes.
+            </p>
+            <ul>
+              <li>Open Developer Tools: Right-click → Inspect → Console tab</li>
+              <li>Use <code>console.log()</code> to display messages</li>
+              <li>Essential for debugging and understanding code flow</li>
+            </ul>
+          </div>
+          <div class="playground" data-playground="printing">
+            <label class="sr-only">Printing playground</label>
+            <div class="playground-editor">
+              <textarea spellcheck="false" aria-label="Printing playground code"></textarea>
+              <div class="playground-actions">
+                <button type="button" class="btn btn-primary playground-run">Run</button>
+                <button type="button" class="btn playground-reset">Reset</button>
+              </div>
+            </div>
+            <div class="playground-preview">
+              <div class="console-output" aria-live="polite">
+                <div class="console-header">
+                  <span class="console-title">Console</span>
+                  <button type="button" class="console-clear" aria-label="Clear console">Clear</button>
+                </div>
+                <div class="console-content"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="lesson-including-js" class="section alt lesson">
+        <div class="container lesson-inner">
+          <div class="lesson-content">
+            <h3>Including JavaScript in HTML</h3>
+            <p>
+              There are three ways to include JavaScript: <strong>Inline</strong> (inside HTML attributes), 
+              <strong>Internal</strong> (inside <code>&lt;script&gt;</code> tags), and <strong>External</strong> (separate .js file).
+            </p>
+            <ul>
+              <li><strong>Inline:</strong> Fast for demos, but logic scattered in HTML</li>
+              <li><strong>Internal:</strong> Good middle ground for small projects</li>
+              <li><strong>External:</strong> Best practice — keeps code organized and reusable</li>
+            </ul>
+            <p>
+              This website uses external JavaScript (script.js), which is the professional approach for complex projects.
+            </p>
+          </div>
+          <div class="playground" data-playground="including-js">
+            <label class="sr-only">Including JS playground</label>
+            <div class="playground-editor">
+              <textarea spellcheck="false" aria-label="Including JS playground code"></textarea>
+              <div class="playground-actions">
+                <button type="button" class="btn btn-primary playground-run">Run</button>
+                <button type="button" class="btn playground-reset">Reset</button>
+              </div>
+            </div>
+            <div class="playground-preview">
+              <div class="console-output" aria-live="polite">
+                <div class="console-header">
+                  <span class="console-title">Console</span>
+                  <button type="button" class="console-clear" aria-label="Clear console">Clear</button>
+                </div>
+                <div class="console-content"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="lesson-variables" class="section lesson">
+        <div class="container lesson-inner">
+          <div class="lesson-content">
+            <h3>Variables</h3>
+            <p>
+              Variables are containers that hold data for later use. They let you store information, give it a name, and use it anywhere in your program.
+            </p>
+            <ul>
+              <li><code>let</code> — use when the variable might change (like a score or counter)</li>
+              <li><code>const</code> — use when the value must not change (like constants or settings)</li>
+              <li><code>var</code> — outdated, don't use it! It behaves weirdly and let/const are safer</li>
+            </ul>
+            <p>
+              <strong>🛑 Emphasis:</strong> No one in modern JavaScript uses <code>var</code> anymore. It behaves weirdly with hoisting, and <code>let</code>/<code>const</code> are much safer and clearer.
+            </p>
+          </div>
+          <div class="playground" data-playground="variables">
+            <label class="sr-only">Variables playground</label>
+            <div class="playground-editor">
+              <textarea spellcheck="false" aria-label="Variables playground code"></textarea>
+              <div class="playground-actions">
+                <button type="button" class="btn btn-primary playground-run">Run</button>
+                <button type="button" class="btn playground-reset">Reset</button>
+              </div>
+            </div>
+            <div class="playground-preview">
+              <div class="console-output" aria-live="polite">
+                <div class="console-header">
+                  <span class="console-title">Console</span>
+                  <button type="button" class="console-clear" aria-label="Clear console">Clear</button>
+                </div>
+                <div class="console-content"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="lesson-data-types" class="section alt lesson">
+        <div class="container lesson-inner">
+          <div class="lesson-content">
+            <h3>Data Types</h3>
+            <p>
+              JavaScript handles many kinds of data, each suited for different purposes. You can use <code>typeof</code> to check what kind of data something is.
+            </p>
+            <ul>
+              <li><strong>String:</strong> Text data enclosed in quotes — <code>"hello"</code></li>
+              <li><strong>Number:</strong> Numeric values (no separate "int" or "float") — <code>42</code>, <code>3.14</code></li>
+              <li><strong>Boolean:</strong> Logical values used in decisions — <code>true</code>, <code>false</code></li>
+              <li><strong>Array:</strong> Ordered list of items — <code>[1, 2, 3]</code></li>
+              <li><strong>Object:</strong> Structured collection of data — <code>{ name: "Bob", age: 25 }</code></li>
+            </ul>
+          </div>
+          <div class="playground" data-playground="data-types">
+            <label class="sr-only">Data Types playground</label>
+            <div class="playground-editor">
+              <textarea spellcheck="false" aria-label="Data Types playground code"></textarea>
+              <div class="playground-actions">
+                <button type="button" class="btn btn-primary playground-run">Run</button>
+                <button type="button" class="btn playground-reset">Reset</button>
+              </div>
+            </div>
+            <div class="playground-preview">
+              <div class="console-output" aria-live="polite">
+                <div class="console-header">
+                  <span class="console-title">Console</span>
+                  <button type="button" class="console-clear" aria-label="Clear console">Clear</button>
+                </div>
+                <div class="console-content"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="lesson-conditionals" class="section lesson">
+        <div class="container lesson-inner">
+          <div class="lesson-content">
+            <h3>Conditionals</h3>
+            <p>
+              Conditionals let your code make decisions. They ask questions like "Is this true?" or "Does this number pass the test?" and act accordingly.
+            </p>
+            <ul>
+              <li><code>if</code>, <code>else if</code>, <code>else</code> — basic decision making</li>
+              <li>Comparison operators: <code>===</code> (strictly equal), <code>!==</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code></li>
+              <li>Logical operators: <code>&&</code> (AND), <code>||</code> (OR), <code>!</code> (NOT)</li>
+              <li>Use <code>===</code> instead of <code>==</code> to avoid type coercion surprises</li>
+            </ul>
+            <p>
+              Example: Check if an exam score passes (passing mark is 75). Conditionals help your program react differently based on the data.
+            </p>
+            <div class="concept-visual conditional-visual" aria-hidden="true">
+              <div class="conditional-flow">
+                <div class="conditional-question">
+                  <span class="conditional-badge">if</span>
+                  <span>score ≥ 75</span>
+                </div>
+                <div class="conditional-branches">
+                  <div class="conditional-branch conditional-branch--true">
+                    <span class="branch-label">true</span>
+                    <span class="branch-result">return "Pass 🎉"</span>
+                  </div>
+                  <div class="conditional-branch conditional-branch--false">
+                    <span class="branch-label">false</span>
+                    <span class="branch-result">return "Try again"</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="playground" data-playground="conditionals">
+            <label class="sr-only">Conditionals playground</label>
+            <div class="playground-editor">
+              <textarea spellcheck="false" aria-label="Conditionals playground code"></textarea>
+              <div class="playground-actions">
+                <button type="button" class="btn btn-primary playground-run">Run</button>
+                <button type="button" class="btn playground-reset">Reset</button>
+              </div>
+            </div>
+            <div class="playground-preview">
+              <div class="console-output" aria-live="polite">
+                <div class="console-header">
+                  <span class="console-title">Console</span>
+                  <button type="button" class="console-clear" aria-label="Clear console">Clear</button>
+                </div>
+                <div class="console-content"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="lesson-loops" class="section alt lesson">
+        <div class="container lesson-inner">
+          <div class="lesson-content">
+            <h3>Loops</h3>
+            <p>
+              Loops repeat code automatically — so you don't write the same line over and over. There are two main types: <code>for</code> and <code>while</code> loops.
+            </p>
+            <ul>
+              <li><strong>For loop:</strong> Initialize, test, and update in a single line</li>
+              <li><strong>While loop:</strong> Runs while a condition is true</li>
+              <li>Loop through arrays using index: <code>for (let i = 0; i &lt; array.length; i++)</code></li>
+              <li>Nested loops: loop inside loop for multi-layered data like grids</li>
+            </ul>
+            <p>
+              Instead of writing "Hello 1" through "Hello 1000" manually, loops make it far shorter and more readable!
+            </p>
+          </div>
+          <div class="playground" data-playground="loops">
+            <label class="sr-only">Loops playground</label>
+            <div class="playground-editor">
+              <textarea spellcheck="false" aria-label="Loops playground code"></textarea>
+              <div class="playground-actions">
+                <button type="button" class="btn btn-primary playground-run">Run</button>
+                <button type="button" class="btn playground-reset">Reset</button>
+              </div>
+            </div>
+            <div class="playground-preview">
+              <div class="console-output" aria-live="polite">
+                <div class="console-header">
+                  <span class="console-title">Console</span>
+                  <button type="button" class="console-clear" aria-label="Clear console">Clear</button>
+                </div>
+                <div class="console-content"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="lesson-functions" class="section alt lesson">
+        <div class="container lesson-inner">
+          <div class="lesson-content">
+            <h3>Functions</h3>
+            <p>
+              Functions are reusable blocks of code designed to perform specific tasks. <code>console.log()</code> is a built-in function — you can also create your own custom functions!
+            </p>
+            <ul>
+              <li>Define with <code>function functionName() { }</code> and call with <code>functionName()</code></li>
+              <li>Parameters: placeholders for values you pass in (arguments)</li>
+              <li>Return values to share results with the caller</li>
+              <li>Functions eliminate repetition — write once, use many times</li>
+            </ul>
+            <p>
+              Instead of rewriting the same logic for different data, functions let you create reusable patterns. Like a personal calculator bot you can call anytime!
+            </p>
+          </div>
+          <div class="playground" data-playground="functions">
+            <label class="sr-only">Functions playground</label>
+            <div class="playground-editor">
+              <textarea spellcheck="false" aria-label="Functions playground code"></textarea>
+              <div class="playground-actions">
+                <button type="button" class="btn btn-primary playground-run">Run</button>
+                <button type="button" class="btn playground-reset">Reset</button>
+              </div>
+            </div>
+            <div class="playground-preview">
+              <div class="console-output" aria-live="polite">
+                <div class="console-header">
+                  <span class="console-title">Console</span>
+                  <button type="button" class="console-clear" aria-label="Clear console">Clear</button>
+                </div>
+                <div class="console-content"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="lesson-arrays" class="section lesson">
+        <div class="container lesson-inner">
+          <div class="lesson-content">
+            <h3>Arrays</h3>
+            <p>
+              An array stores multiple related values in a single variable. Think of it like a numbered shelf — each slot holds one item, and you can access them by position (index starts at 0). A good high-level visualisation: <a href="https://medium.com/@sewolpe/visualizing-javascript-array-methods-7babf560f7be">click here</a> .
+            </p>
+            <ul>
+              <li><code>push(item)</code> — adds item to the end</li>
+              <li><code>pop()</code> — removes last item</li>
+              <li><code>length</code> — returns total items</li>
+              <li>Access elements: <code>fruits[0]</code> gets the first item</li>
+              <li>Nested arrays: arrays inside arrays for grids and tables</li>
+            </ul>
+          <div class="playground" data-playground="arrays">
+            <label class="sr-only">Arrays playground</label>
+            <div class="playground-editor">
+              <textarea spellcheck="false" aria-label="Arrays playground code"></textarea>
+              <div class="playground-actions">
+                <button type="button" class="btn btn-primary playground-run">Run</button>
+                <button type="button" class="btn playground-reset">Reset</button>
+              </div>
+            </div>
+            <div class="playground-preview">
+              <div class="console-output" aria-live="polite">
+                <div class="console-header">
+                  <span class="console-title">Console</span>
+                  <button type="button" class="console-clear" aria-label="Clear console">Clear</button>
+                </div>
+                <div class="console-content"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="lesson-objects" class="section alt lesson">
+        <div class="container lesson-inner">
+          <div class="lesson-content">
+            <h3>Objects</h3>
+            <p>
+              Objects store data as key–value pairs — a way to represent real-world things with properties. You can access, modify, add, or delete properties.
+            </p>
+            <ul>
+              <li>Access: <code>student.name</code> or <code>student['name']</code></li>
+              <li>Modify: <code>student.age = 20</code></li>
+              <li>Add: <code>student.city = "Singapore"</code></li>
+              <li>Delete: <code>delete student.major</code></li>
+              <li>Methods: <code>Object.keys()</code>, <code>Object.values()</code>, <code>Object.entries()</code></li>
+              <li>Nested objects: objects inside objects for complex data</li>
+            </ul>
+          </div>
+          <div class="playground" data-playground="objects">
+            <label class="sr-only">Objects playground</label>
+            <div class="playground-editor">
+              <textarea spellcheck="false" aria-label="Objects playground code"></textarea>
+              <div class="playground-actions">
+                <button type="button" class="btn btn-primary playground-run">Run</button>
+                <button type="button" class="btn playground-reset">Reset</button>
+              </div>
+            </div>
+            <div class="playground-preview">
+              <div class="console-output" aria-live="polite">
+                <div class="console-header">
+                  <span class="console-title">Console</span>
+                  <button type="button" class="console-clear" aria-label="Clear console">Clear</button>
+                </div>
+                <div class="console-content"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="lesson-dom" class="section lesson">
+        <div class="container lesson-inner">
+          <div class="lesson-content">
+            <h3>Document Object Model Manipulation</h3>
+            <p>
+              The DOM (Document Object Model) is how JavaScript sees and interacts with your webpage. Every tag (<code>&lt;h1&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;button&gt;</code>, etc.) becomes an object that JS can find, read, or change.
+            </p>
+            <p><strong>Try the examples below!</strong> Each example manipulates the mini website shown on the right. Run the code to see the changes happen in real-time.</p>
+            <h4>Selectors</h4>
+            <p>Selectors are how you grab parts of your webpage to manipulate them.</p>
+          </div>
+          
+          <!-- Mini Website HTML Code -->
+          <div class="lesson-content">
+            <h4>Mini Website HTML Code</h4>
+            <p>Here's the HTML structure of the mini website you'll be manipulating:</p>
+            <pre class="html-code-block"><code>&lt;div id="mini-website"&gt;
+  &lt;header id="site-header"&gt;
+    &lt;h1 id="site-title"&gt;My Mini Website&lt;/h1&gt;
+    &lt;nav&gt;
+      &lt;button class="nav-btn" id="home-btn"&gt;Home&lt;/button&gt;
+      &lt;button class="nav-btn" id="about-btn"&gt;About&lt;/button&gt;
+      &lt;button class="nav-btn" id="contact-btn"&gt;Contact&lt;/button&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+  &lt;main id="main-content"&gt;
+    &lt;section class="content-section"&gt;
+      &lt;h2 id="section-title"&gt;Welcome Section&lt;/h2&gt;
+      &lt;p class="highlight" id="intro-text"&gt;This is a sample paragraph...&lt;/p&gt;
+      &lt;p class="highlight"&gt;Another paragraph with the same class.&lt;/p&gt;
+      &lt;ul id="feature-list"&gt;
+        &lt;li&gt;Feature 1&lt;/li&gt;
+        &lt;li&gt;Feature 2&lt;/li&gt;
+        &lt;li&gt;Feature 3&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/section&gt;
+    &lt;section class="content-section"&gt;
+      &lt;h2&gt;Actions&lt;/h2&gt;
+      &lt;button id="action-btn" class="action-button"&gt;Click Me!&lt;/button&gt;
+      &lt;p id="status-text"&gt;Status: Ready&lt;/p&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+  &lt;footer id="site-footer"&gt;
+    &lt;p&gt;&copy; 2024 Mini Website Demo&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+          
+          <div class="mini-website-actions" aria-live="polite">
+            <button type="button" class="btn btn-primary" id="mini-website-generate-btn" aria-describedby="mini-website-actions-hint">
+              Generate Mini Website
+            </button>
+            <p id="mini-website-actions-hint" class="mini-website-hint">
+              Click to spawn the draggable demo window used in the DOM lessons.
+            </p>
+          </div>
+
+          <template id="mini-website-template">
+            <div class="mini-website-sticky-wrapper" id="mini-website-wrapper">
+              <div class="mini-website-demo" id="mini-website" aria-expanded="true">
+                <div class="demo-header">
+                  <span class="demo-title">Mini Website Demo</span>
+                  <button class="demo-close" aria-label="Minimize mini website" aria-controls="mini-website-content" aria-expanded="true" title="Minimize">−</button>
+                </div>
+                <div class="mini-website-content" id="mini-website-content">
+                  <header id="site-header">
+                    <h1 id="site-title">My Mini Website</h1>
+                    <nav>
+                      <button class="nav-btn" id="home-btn">Home</button>
+                      <button class="nav-btn" id="about-btn">About</button>
+                      <button class="nav-btn" id="contact-btn">Contact</button>
+                    </nav>
+                  </header>
+                  <main id="main-content">
+                    <section class="content-section">
+                      <h2 id="section-title">Welcome Section</h2>
+                      <p class="highlight" id="intro-text">This is a sample paragraph that you can manipulate with JavaScript!</p>
+                      <p class="highlight">Another paragraph with the same class.</p>
+                      <ul id="feature-list">
+                        <li>Feature 1</li>
+                        <li>Feature 2</li>
+                        <li>Feature 3</li>
+                      </ul>
+                    </section>
+                    <section class="content-section">
+                      <h2>Actions</h2>
+                      <button id="action-btn" class="action-button">Click Me!</button>
+                      <p id="status-text">Status: Ready</p>
+                    </section>
+                  </main>
+                  <footer id="site-footer">
+                    <p>&copy; 2024 Mini Website Demo</p>
+                  </footer>
+                </div>
+              </div>
+            </div>
+          </template>
+          
+          <div class="lesson-content collapsible-section">
+            <button class="section-toggle" aria-expanded="true">
+              <h4>1. getElementById()</h4>
+              <span class="toggle-icon">▼</span>
+            </button>
+            <div class="section-content">
+              <p>Used when an element has a unique ID.</p>
+              <ul>
+                <li><code>document.getElementById("title")</code> finds the element with that ID</li>
+                <li><code>.textContent</code> gets or changes its text</li>
+              </ul>
+            </div>
+          </div>
+          <div class="playground" data-playground="dom-getelementbyid">
+            <div class="playground-editor">
+              <textarea spellcheck="false" aria-label="getElementById playground code"></textarea>
+              <div class="playground-actions">
+                <button type="button" class="btn btn-primary playground-run">Run</button>
+                <button type="button" class="btn playground-reset">Reset</button>
+              </div>
+            </div>
+            <div class="playground-preview">
+              <div class="console-output" aria-live="polite">
+                <div class="console-header">
+                  <span class="console-title">Console</span>
+                  <button type="button" class="console-clear" aria-label="Clear console">Clear</button>
+                </div>
+                <div class="console-content"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="lesson-content collapsible-section">
+            <button class="section-toggle" aria-expanded="true">
+              <h4>2. getElementsByClassName()</h4>
+              <span class="toggle-icon">▼</span>
+            </button>
+            <div class="section-content">
+              <p>Selects multiple elements that share the same class name.</p>
+              <ul>
+                <li>Returns an HTMLCollection (like an array)</li>
+                <li>You can target items using <code>[index]</code></li>
+                <li><code>.style</code> lets you change CSS properties directly</li>
+              </ul>
+            </div>
+          </div>
+          <div class="playground" data-playground="dom-getelementsbyclassname">
+            <div class="playground-editor">
+              <textarea spellcheck="false" aria-label="getElementsByClassName playground code"></textarea>
+              <div class="playground-actions">
+                <button type="button" class="btn btn-primary playground-run">Run</button>
+                <button type="button" class="btn playground-reset">Reset</button>
+              </div>
+            </div>
+            <div class="playground-preview">
+              <div class="console-output" aria-live="polite">
+                <div class="console-header">
+                  <span class="console-title">Console</span>
+                  <button type="button" class="console-clear" aria-label="Clear console">Clear</button>
+                </div>
+                <div class="console-content"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="lesson-content collapsible-section">
+            <button class="section-toggle" aria-expanded="true">
+              <h4>3. querySelector()</h4>
+              <span class="toggle-icon">▼</span>
+            </button>
+            <div class="section-content">
+              <p>Modern, flexible selector that returns the first matching element.</p>
+              <ul>
+                <li>Works with CSS selectors like <code>.class</code>, <code>#id</code>, or tag</li>
+                <li>Returns a single element (the first match)</li>
+                <li>More flexible than getElementById</li>
+              </ul>
+            </div>
+          </div>
+          <div class="playground" data-playground="dom-queryselector">
+            <div class="playground-editor">
+              <textarea spellcheck="false" aria-label="querySelector playground code"></textarea>
+              <div class="playground-actions">
+                <button type="button" class="btn btn-primary playground-run">Run</button>
+                <button type="button" class="btn playground-reset">Reset</button>
+              </div>
+            </div>
+            <div class="playground-preview">
+              <div class="console-output" aria-live="polite">
+                <div class="console-header">
+                  <span class="console-title">Console</span>
+                  <button type="button" class="console-clear" aria-label="Clear console">Clear</button>
+                </div>
+                <div class="console-content"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="lesson-content collapsible-section">
+            <button class="section-toggle" aria-expanded="true">
+              <h4>4. querySelectorAll()</h4>
+              <span class="toggle-icon">▼</span>
+            </button>
+            <div class="section-content">
+              <p>Returns all matching elements as a NodeList.</p>
+              <ul>
+                <li>Returns all matches (a NodeList)</li>
+                <li>Can loop through results with <code>forEach</code></li>
+                <li>Useful when you need multiple elements</li>
+              </ul>
+            </div>
+          </div>
+          <div class="playground" data-playground="dom-queryselectorall">
+            <div class="playground-editor">
+              <textarea spellcheck="false" aria-label="querySelectorAll playground code"></textarea>
+              <div class="playground-actions">
+                <button type="button" class="btn btn-primary playground-run">Run</button>
+                <button type="button" class="btn playground-reset">Reset</button>
+              </div>
+            </div>
+            <div class="playground-preview">
+              <div class="console-output" aria-live="polite">
+                <div class="console-header">
+                  <span class="console-title">Console</span>
+                  <button type="button" class="console-clear" aria-label="Clear console">Clear</button>
+                </div>
+                <div class="console-content"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="lesson-content">
+            <h4>Events and Listeners</h4>
+            <p>Webpages aren't just for reading — they react. Events are how you make your site interactive, responding to clicks, hovers, key presses, etc.</p>
+          </div>
+          
+          <div class="lesson-content collapsible-section">
+            <button class="section-toggle" aria-expanded="true">
+              <h4>5. addEventListener() - Basic Button Click</h4>
+              <span class="toggle-icon">▼</span>
+            </button>
+            <div class="section-content">
+              <p><code>addEventListener("click", function() { ... })</code> listens for a click. When it happens, your function runs.</p>
+            </div>
+          </div>
+          <div class="playground" data-playground="dom-events">
+            <div class="playground-editor">
+              <textarea spellcheck="false" aria-label="Events playground code"></textarea>
+              <div class="playground-actions">
+                <button type="button" class="btn btn-primary playground-run">Run</button>
+                <button type="button" class="btn playground-reset">Reset</button>
+              </div>
+            </div>
+            <div class="playground-preview">
+              <div class="console-output" aria-live="polite">
+                <div class="console-header">
+                  <span class="console-title">Console</span>
+                  <button type="button" class="console-clear" aria-label="Clear console">Clear</button>
+                </div>
+                <div class="console-content"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="lesson-content collapsible-section">
+            <button class="section-toggle" aria-expanded="true">
+              <h4>6. Event Delegation</h4>
+              <span class="toggle-icon">▼</span>
+            </button>
+            <div class="section-content">
+              <p><code>document.body</code> listens to all clicks inside the page. <code>e.target</code> tells you which element was clicked. Useful when you have many clickable elements.</p>
+            </div>
+          </div>
+          <div class="playground" data-playground="dom-event-delegation">
+            <div class="playground-editor">
+              <textarea spellcheck="false" aria-label="Event delegation playground code"></textarea>
+              <div class="playground-actions">
+                <button type="button" class="btn btn-primary playground-run">Run</button>
+                <button type="button" class="btn playground-reset">Reset</button>
+              </div>
+            </div>
+            <div class="playground-preview">
+              <div class="console-output" aria-live="polite">
+                <div class="console-header">
+                  <span class="console-title">Console</span>
+                  <button type="button" class="console-clear" aria-label="Clear console">Clear</button>
+                </div>
+                <div class="console-content"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="lesson-events" class="section alt lesson">
+        <div class="container lesson-inner">
+          <div class="lesson-content">
+            <h3>Events</h3>
+            <p>
+              Wire up interactions with <code>addEventListener</code>. Respond to clicks, key presses, and more with callback functions.
+            </p>
+            <ul>
+              <li>Remember to remove listeners when no longer needed</li>
+              <li>Use the event object to read details like <code>event.target</code></li>
+              <li>Debounce frequent events such as scroll for performance</li>
+            </ul>
+          </div>
+          <div class="playground" data-playground="events">
+            <label class="sr-only">Events playground</label>
+            <div class="playground-editor">
+              <textarea spellcheck="false" aria-label="Events playground code"></textarea>
+              <div class="playground-actions">
+                <button type="button" class="btn btn-primary playground-run">Run</button>
+                <button type="button" class="btn playground-reset">Reset</button>
+              </div>
+            </div>
+            <div class="playground-preview">
+              <div class="console-output" aria-live="polite">
+                <div class="console-header">
+                  <span class="console-title">Console</span>
+                  <button type="button" class="console-clear" aria-label="Clear console">Clear</button>
+                </div>
+                <div class="console-content"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="resources" class="section alt">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Resources</h2>
+            <p>Share these references with students for deeper dives and practice.</p>
+          </div>
+          <ul class="resource-list">
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer">MDN JavaScript Guide</a></li>
+            <li><a href="https://javascript.info" target="_blank" rel="noreferrer">JavaScript.info interactive chapters</a></li>
+            <li><a href="https://www.w3schools.com/js/" target="_blank" rel="noreferrer">W3Schools JavaScript Tutorial</a></li>
+          </ul>
+        </div>
+      </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> Brand. All rights reserved.</p>
+        <a href="#" class="link-muted">Privacy</a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+  </html>
+
+
+
