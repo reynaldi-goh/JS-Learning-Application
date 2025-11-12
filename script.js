@@ -525,7 +525,7 @@ document.addEventListener('click', (event) => {
 
 // Keyboard event example
 document.addEventListener('keydown', (event) => {
-  console.log('Key pressed:', event.key);
+  playgroundLog('Key pressed:', event.key);
 });
 
 console.log('Event listeners added! Try clicking or pressing keys.');
